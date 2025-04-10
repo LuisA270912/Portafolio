@@ -1,0 +1,120 @@
+.skills {
+    padding: 5rem 0;
+    background: transparent;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.skills.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    width: 100%;
+}
+
+.title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+    color: #60a5fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.titleIcon {
+    font-size: 2rem;
+    color: #60a5fa;
+}
+
+.skillsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.skillCategory {
+    background: rgba(31, 41, 55, 0.8);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skillCategory:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.categoryTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #60a5fa;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.categoryIcon {
+    font-size: 1.5rem;
+    color: #60a5fa;
+}
+
+.skillsList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.skillItem {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background: rgba(75, 85, 99, 0.3);
+    transition: background-color 0.3s ease;
+}
+
+.skillItem:hover {
+    background: rgba(75, 85, 99, 0.5);
+}
+
+.skillIcon {
+    font-size: 1.25rem;
+    color: #60a5fa;
+}
+
+.skillName {
+    font-size: 0.9rem;
+    color: #e5e7eb;
+}
+
+@media (max-width: 768px) {
+    .skills {
+        padding: 3rem 0;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .skillsGrid {
+        grid-template-columns: 1fr;
+    }
+} 

@@ -1,0 +1,206 @@
+.projects {
+    padding: 5rem 0;
+    background: transparent;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.projects.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    width: 100%;
+}
+
+.title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+    color: #60a5fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.titleIcon {
+    font-size: 2rem;
+    color: #60a5fa;
+}
+
+.projectsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2.5rem;
+}
+
+.projectCard {
+    background: rgba(31, 41, 55, 0.8);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.projectCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.projectImage {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.projectCard:hover .image {
+    transform: scale(1.05);
+}
+
+.projectOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.projectCard:hover .projectOverlay {
+    opacity: 1;
+}
+
+.projectLinks {
+    display: flex;
+    gap: 1rem;
+}
+
+.projectLink {
+    background: #3b82f6;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.projectLink:hover {
+    background: #2563eb;
+}
+
+.projectContent {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.projectTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #60a5fa;
+    margin-bottom: 0.75rem;
+}
+
+.projectDescription {
+    color: #d1d5db;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.projectTechnologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.technology {
+    background: rgba(75, 85, 99, 0.5);
+    padding: 0.4rem 0.8rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    color: #e5e7eb;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: background-color 0.3s ease;
+}
+
+.technology:hover {
+    background: #3b82f6;
+}
+
+.techIcon {
+    font-size: 1rem;
+    color: #60a5fa;
+}
+
+.projectFeatures {
+    margin-top: auto;
+}
+
+.featuresTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #60a5fa;
+    margin-bottom: 0.75rem;
+}
+
+.featuresList {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    color: #d1d5db;
+}
+
+.featureItem {
+    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .projects {
+        padding: 3rem 0;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .projectsGrid {
+        grid-template-columns: 1fr;
+    }
+} 

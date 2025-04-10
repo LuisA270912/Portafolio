@@ -1,32 +1,97 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styles from './Navbar.module.css';
+import { FaBars, FaTimes } from 'react-icons/fa';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [activeSection, setActiveSection] = useState('inicio');
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const sections = ['inicio', 'educacion', 'experiencia', 'habilidades', 'proyectos', 'contacto'];
+            
+            for (const section of sections) {
+                const element = document.getElementById(section);
+                if (element) {
+                    const rect = element.getBoundingClientRect();
+                    if (rect.top <= 100 && rect.bottom >= 100) {
+                        setActiveSection(section);
+                        break;
+                    }
+                }
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const scrollToSection = (sectionId: string) => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+            window.scrollTo({
+                top: element.offsetTop - 80,
+                behavior: 'smooth'
+            });
+            setIsMenuOpen(false);
+        }
+    };
 
     return (
         <nav className={styles.navbar}>
             <div className={styles.container}>
-                <Link href="/" className={styles.logo}>
+                <div className={styles.logo} onClick={() => scrollToSection('inicio')}>
                     Luis Dev
-                </Link>
+                </div>
 
                 <button
                     className={styles.menuButton}
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                     aria-label="Toggle menu"
                 >
-                    <span className={styles.menuIcon}></span>
+                    {isMenuOpen ? <FaTimes /> : <FaBars />}
                 </button>
 
                 <div className={`${styles.navLinks} ${isMenuOpen ? styles.active : ''}`}>
-                    <Link href="/" className={styles.navLink}>Inicio</Link>
-                    <Link href="/proyectos" className={styles.navLink}>Proyectos</Link>
-                    <Link href="/sobre-mi" className={styles.navLink}>Sobre Mí</Link>
-                    <Link href="/contacto" className={styles.navLink}>Contacto</Link>
+                    <button 
+                        className={`${styles.navLink} ${activeSection === 'inicio' ? styles.active : ''}`}
+                        onClick={() => scrollToSection('inicio')}
+                    >
+                        Inicio
+                    </button>
+                    <button 
+                        className={`${styles.navLink} ${activeSection === 'educacion' ? styles.active : ''}`}
+                        onClick={() => scrollToSection('educacion')}
+                    >
+                        Educación
+                    </button>
+                    <button 
+                        className={`${styles.navLink} ${activeSection === 'experiencia' ? styles.active : ''}`}
+                        onClick={() => scrollToSection('experiencia')}
+                    >
+                        Experiencia
+                    </button>
+                    <button 
+                        className={`${styles.navLink} ${activeSection === 'habilidades' ? styles.active : ''}`}
+                        onClick={() => scrollToSection('habilidades')}
+                    >
+                        Habilidades
+                    </button>
+                    <button 
+                        className={`${styles.navLink} ${activeSection === 'proyectos' ? styles.active : ''}`}
+                        onClick={() => scrollToSection('proyectos')}
+                    >
+                        Proyectos
+                    </button>
+                    <button 
+                        className={`${styles.navLink} ${activeSection === 'contacto' ? styles.active : ''}`}
+                        onClick={() => scrollToSection('contacto')}
+                    >
+                        Contacto
+                    </button>
                 </div>
             </div>
         </nav>
