@@ -6,6 +6,10 @@
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+  --primary-color: #004e92;
+  --secondary-color: #000428;
+  --text-color: #ffffff;
+  --text-secondary: #e0e0e0;
 }
 
 * {
@@ -22,8 +26,9 @@ body {
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: #ffffff;
+  color: var(--text-color);
+  background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+  min-height: 100vh;
 }
 
 a {
